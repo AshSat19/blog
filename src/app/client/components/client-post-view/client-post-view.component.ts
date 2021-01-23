@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -23,7 +24,7 @@ export class ClientPostViewComponent implements OnInit, OnDestroy {
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private facade: ClientFacade, private route: ActivatedRoute) {}
+  constructor(private facade: ClientFacade, private route: ActivatedRoute, private title: Title) {}
 
   ngOnInit(): void {
     try {
@@ -39,6 +40,7 @@ export class ClientPostViewComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         if (data) {
           this.currentPost = JSON.parse(JSON.stringify(data));
+          this.title.setTitle(`${this.currentPost?.title} | Ashwin Sathian's Blog`)
         }
       });
   }

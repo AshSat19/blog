@@ -1,5 +1,6 @@
 ::ng-deep .blog-text {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  padding: 1rem;
 
   blockquote {
     display: block;
@@ -12,6 +13,13 @@
     display: block;
     margin: 1rem auto;
     text-align: center;
-    min-width: 75%;
+    min-width: 60%;
+    max-width: 90%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .blog-text {
+    font-size: 1.25rem;
   }
 }
