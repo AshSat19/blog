@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "blog-1a136": {
+      "hosting": {
+        "blog": [
+          "blog-1a136"
+        ]
+      }
+    }
+  }
+}

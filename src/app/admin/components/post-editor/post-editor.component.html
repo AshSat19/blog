@@ -1,0 +1,192 @@
+<p-menubar [autoDisplay]="true">
+  <ng-template pTemplate="start">
+    <h2>Blog Editor</h2>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <div class="float-right">
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Save Draft"
+        class="p-button-info p-button-text mr-2"
+        (click)="createDraft()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-save"
+        label="Publish"
+        class="float-right"
+        (click)="publishPost()"
+      ></button>
+    </div>
+  </ng-template>
+</p-menubar>
+
+<div class="p-grid p-p-2">
+  <div class="p-col-4">
+    <p-card header="Post Summary">
+      <p-calendar
+        styleClass="w-100p"
+        [(ngModel)]="postCreatedDate"
+        dateFormat="dd-mm-yy"
+        [touchUI]="true"
+      ></p-calendar>
+    </p-card>
+
+    <p-card header="Post Category">
+      <p-dropdown
+        [options]="postCategoryOptions"
+        [(ngModel)]="currentPost.category"
+        placeholder="Select a Category"
+        styleClass="w-100p"
+      ></p-dropdown>
+    </p-card>
+
+    <p-card header="Post Summary">
+      <textarea
+        rows="3"
+        pInputTextarea
+        [autoResize]="true"
+        [style]="{ width: '100%' }"
+        [(ngModel)]="currentPost.summary"
+        placeholder="Enter Post Summary"
+        maxlength="100"
+      ></textarea>
+    </p-card>
+
+    <p-card header="Featured Image">
+      <p-progressSpinner
+        *ngIf="isUploadingFeaturedImage"
+        [style]="{
+          width: '25px',
+          height: '25px',
+          display: 'block',
+          margin: 'auto'
+        }"
+      ></p-progressSpinner>
+      <img
+        *ngIf="currentPost?.imageURL"
+        [src]="currentPost.imageURL"
+        class="p-mx-1 full-width"
+      />
+      <button
+        pButton
+        [label]="
+          (currentPost?.imageURL ? 'Change' : 'Select') + ' Featured Image'
+        "
+        icon="pi pi-image"
+        [style]="{ width: '100%', margin: '1rem 0' }"
+        (click)="featuredImagePicker.click()"
+      ></button>
+      <button
+        *ngIf="currentPost?.imageURL"
+        pButton
+        label="Remove Featured Image"
+        [style]="{ width: '100%' }"
+        class="p-button-danger"
+        (click)="featuredImagePicker.click()"
+      ></button>
+      <input
+        #featuredImagePicker
+        hidden
+        type="file"
+        accept="image/*"
+        (change)="onImagePicked($event)"
+      />
+    </p-card>
+  </div>
+  <div class="p-col-8">
+    <textarea
+      rows="1"
+      pInputTextarea
+      [autoResize]="true"
+      [style]="{ width: '100%', fontSize: '2rem', margin: '1rem 0' }"
+      [(ngModel)]="currentPost.title"
+      placeholder="Post Title"
+    ></textarea>
+    <p-editor
+      [(ngModel)]="currentPost.content"
+      placeholder="Post content goes here"
+    >
+      <p-header>
+        <span class="ql-formats">
+          <select class="ql-header" tabindex="-1">
+            <option value="1" tabindex="-1">Heading</option>
+            <option value="2" tabindex="-1">Subheading</option>
+            <option selected tabindex="-1">Normal</option>
+          </select>
+        </span>
+        <span class="ql-formats">
+          <button class="ql-bold" aria-label="Bold" tabindex="-1"></button>
+          <button class="ql-italic" aria-label="Italic" tabindex="-1"></button>
+          <button
+            class="ql-underline"
+            aria-label="Underline"
+            tabindex="-1"
+          ></button>
+          <button
+            class="ql-strike"
+            aria-label="Strikethrough"
+            tabindex="-1"
+          ></button>
+        </span>
+        <span class="ql-formats">
+          <select class="ql-color" tabindex="-1"></select>
+        </span>
+        <span class="ql-formats">
+          <button
+            class="ql-list"
+            value="ordered"
+            aria-label="Ordered List"
+            tabindex="-1"
+          ></button>
+          <button
+            class="ql-list"
+            value="bullet"
+            aria-label="Unordered List"
+            tabindex="-1"
+          ></button>
+          <select class="ql-align" tabindex="-1">
+            <option selected tabindex="-1">Left</option>
+            <option value="center" tabindex="-1">
+              <span><<i class="pi pi-check"></i></span>Center
+            </option>
+            <option value="right" tabindex="-1">Right</option>
+            <option value="justify" tabindex="-1">Justify</option>
+          </select>
+        </span>
+        <span class="ql-formats">
+          <button
+            class="ql-link"
+            aria-label="Insert Link"
+            tabindex="-1"
+          ></button>
+          <button
+            class="ql-image"
+            aria-label="Insert Image"
+            tabindex="-1"
+          ></button>
+          <button
+            class="ql-code-block"
+            aria-label="Insert Code Block"
+            tabindex="-1"
+          ></button>
+          <button
+            class="ql-blockquote"
+            aria-label="Insert Blockquote"
+            tabindex="-1"
+          ></button>
+        </span>
+        <span class="ql-formats">
+          <button
+            class="ql-clean"
+            aria-label="Remove Styles"
+            tabindex="-1"
+          ></button>
+        </span>
+      </p-header>
+    </p-editor>
+  </div>
+</div>

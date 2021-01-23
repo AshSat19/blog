@@ -1,0 +1,21 @@
+<div class="p-grid">
+  <div class="p-col-12 p-mt-5">
+    <h1 class="p-text-center heading-text">Blog Admin Panel</h1>
+  </div>
+  <div class="p-col-12 p-my-10">
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Create New Post"
+      class="p-button-raised p-d-block p-mx-auto p-my-3"
+      routerLink="./create"
+    ></button>
+  </div>
+  <div class="p-grid p-xl-10 p-lg-10 p-md-12 p-sm-12 p-mx-auto p-my-3">
+    <p-tabMenu [model]="postTypes" [activeItem]="activeItem"></p-tabMenu>
+    <div class="p-col-12">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

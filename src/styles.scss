@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+body, html {
+    background-color: rgb(10, 10, 10);
+    min-height: 100%;
+}
+
+*:not(.pi) {
+    font-family: 'Raleway', Roboto, sans-serif;
+}
+
+.heading-text {
+    font-weight: bold;
+}
+
+.body-text {
+    font-weight: normal;
+}
+
+.p-card {
+    width: 100% !important;
+}
+
+.w-100p {
+    width: 100% !important;
+}

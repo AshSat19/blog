@@ -1,0 +1,57 @@
+<p-dataView
+        *ngIf="draftPosts"
+        [value]="draftPosts"
+        [paginator]="true"
+        [rows]="6"
+        layout="list"
+        [totalRecords]="draftPosts.length"
+      >
+        <ng-template let-post pTemplate="listItem">
+          <div class="p-col-12">
+            <div class="post-list-item">
+              <img [src]="post?.imageURL" [alt]="post?.title" />
+              <div class="post-list-detail">
+                <div class="post-title">{{ post?.title }}</div>
+                <div class="post-summary">
+                  {{ post?.createdDate | date }}
+                </div>
+                <div class="post-summary">{{ post?.summary }}</div>
+                <p-tag [value]="post?.category" [rounded]="true"></p-tag>
+              </div>
+              <div class="product-list-action">
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  label="Read now"
+                  class="p-button-outlined p-button-info w-100p p-my-3"
+                  [routerLink]="'./' + post?.slug"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template let-post pTemplate="gridItem">
+          <div class="p-col-12 p-md-4">
+            <div class="post-grid-item card">
+              <div class="post-grid-item-content">
+                <img [src]="post?.imageURL" [alt]="post?.title" />
+                <div class="post-title">{{ post?.title }}</div>
+                <div class="post-summary">
+                  {{ post?.createdDate | date }}
+                </div>
+                <div class="post-summary">{{ post?.summary }}</div>
+                <p-tag [value]="post?.category" [rounded]="true"></p-tag>
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  label="Read now"
+                  class="p-button-outlined p-button-info w-100p p-my-3"
+                  [routerLink]="'./' + post?.slug"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-dataView>
