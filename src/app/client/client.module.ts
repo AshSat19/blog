@@ -16,6 +16,7 @@ import { ClientPostViewComponent } from './components/client-post-view/client-po
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ClientStateModule } from './+state/client-state.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     TagModule,
 
     SharedModule,
+    ClientStateModule
   ],
 })
 export class ClientModule {}

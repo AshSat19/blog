@@ -12,7 +12,7 @@ export const environment = {
     messagingSenderId: '1044272290847',
     appId: '1:1044272290847:web:7dacc04d88bd8ba98e092a',
   },
-  apiURL: 'https://peaceful-headland-96005.herokuapp.com/api/',
+  apiURL: 'http://localhost:3000/api/',
 };
 
 /*
