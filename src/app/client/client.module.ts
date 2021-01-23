@@ -9,6 +9,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
 import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
+import { ScrollTopModule } from 'primeng/scrolltop';
 
 import { ClientHeaderComponent } from './components/client-header/client-header.component';
 import { ClientDashboardComponent } from './components/client-dashboard/client-dashboard.component';
@@ -37,9 +38,10 @@ import { ClientStateModule } from './+state/client-state.module';
     InputTextModule,
     DataViewModule,
     TagModule,
+    ScrollTopModule,
 
     SharedModule,
-    ClientStateModule
+    ClientStateModule,
   ],
 })
 export class ClientModule {}

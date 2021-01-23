@@ -1,0 +1,10 @@
+::ng-deep .blog-text {
+  font-size: 1.5rem;
+
+  blockquote {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 900px;
+  }
+}

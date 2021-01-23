@@ -1,8 +1,12 @@
-<app-client-header [title]="currentPost.title" [mastHeadCover]="currentPost.imageURL"></app-client-header>
+<p-scrollTop></p-scrollTop>
+<app-client-header
+  [title]="currentPost.title"
+  [mastHeadCover]="currentPost.imageURL"
+></app-client-header>
 <div class="p-grid">
-    <div class="p-grid p-xl-10 p-lg-10 p-md-12 p-sm-12 p-mx-auto p-my-2">
-        <p-card>
-            <div [innerHTML]="currentPost?.content"></div>
-        </p-card>
-    </div>
+  <div class="p-grid p-xl-10 p-lg-10 p-md-12 p-sm-12 p-mx-auto p-my-2">
+    <p-card>
+      <div class="blog-text" [innerHTML]="currentPost?.content"></div>
+    </p-card>
+  </div>
 </div>
