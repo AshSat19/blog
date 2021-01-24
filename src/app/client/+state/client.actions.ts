@@ -49,3 +49,13 @@ export const loadPostSuccess = createAction(
   '[Client] Load Post Successful',
   props<{ currentPost: BlogPost }>()
 );
+
+// Like Post
+export const likePost = createAction(
+  '[Client] Like Post',
+  props<{ postBody: BlogPost }>()
+);
+export const likePostSuccess = createAction(
+  '[Client] Load Post Successful',
+  props<{ currentPost: BlogPost }>()
+);

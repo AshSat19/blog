@@ -17,6 +17,7 @@ import { ClientPostViewComponent } from './components/client-post-view/client-po
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ClientStateModule } from './+state/client-state.module';
+import { TooltipModule } from 'primeng/tooltip';
 @NgModule({
   declarations: [
     ClientHeaderComponent,
@@ -36,6 +37,7 @@ import { ClientStateModule } from './+state/client-state.module';
     DataViewModule,
     TagModule,
     ScrollTopModule,
+    TooltipModule,
 
     SharedModule,
     ClientStateModule,

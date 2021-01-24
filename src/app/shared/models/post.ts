@@ -7,6 +7,7 @@ export interface BlogPost {
   imageURL?: string;
   createdDate: number;
   published: boolean;
+  likes?: number;
 }
 
 export interface BlogPostSimple {
@@ -16,11 +17,12 @@ export interface BlogPostSimple {
   summary?: string;
   imageURL?: string;
   createdDate: number;
+  likes?: number;
 }
 
 export enum PostCategories {
   misc = 'MISC',
   trivia = 'TRIVIA',
   review = 'REVIEW',
-  tech = 'TECH'
+  tech = 'TECH',
 }

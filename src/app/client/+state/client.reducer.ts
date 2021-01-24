@@ -110,6 +110,21 @@ const postsClientReducer = createReducer(
       currentPost,
       loaded: true,
     })
+  ),
+
+  // Like Post
+  on(PostsClientActions.likePost, (state) => ({
+    ...state,
+    loaded: false,
+    error: null,
+  })),
+  on(
+    PostsClientActions.likePostSuccess,
+    (state, { currentPost }: { currentPost: BlogPost }) => ({
+      ...state,
+      currentPost,
+      loaded: true,
+    })
   )
 );
 

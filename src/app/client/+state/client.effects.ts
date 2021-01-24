@@ -117,4 +117,23 @@ export class ClientEffects {
     },
     { dispatch: false }
   );
+
+  // API call for liking a post
+  likePost$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(ClientActions.likePost),
+        tap((action) => {
+          this.service
+            .likePost(action.postBody)
+            .subscribe((currentPost: BlogPost) => {
+              return this.store.dispatch(
+                ClientActions.likePostSuccess({ currentPost })
+              );
+            });
+        })
+      );
+    },
+    { dispatch: false }
+  );
 }

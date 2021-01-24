@@ -38,4 +38,11 @@ export class ClientService {
   getPost(slug: string): Observable<BlogPost> {
     return this.httpClient.get<BlogPost>(`${API_BASE_URL}${slug}`);
   }
+
+  likePost(postBody: BlogPost): Observable<BlogPost> {
+    return this.httpClient.put<BlogPost>(
+      `${API_BASE_URL}like/${postBody.slug}`,
+      postBody
+    );
+  }
 }

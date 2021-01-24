@@ -5,6 +5,7 @@ import { select, Store } from '@ngrx/store';
 import * as ClientSelectors from './client.selectors';
 import * as ClientActions from './client.actions';
 import { ClientState } from './client.model';
+import { BlogPost } from 'src/app/shared/models/post';
 
 @Injectable()
 export class ClientFacade {
@@ -40,5 +41,9 @@ export class ClientFacade {
 
   loadPost(slug: string): void {
     this.store.dispatch(ClientActions.loadPost({ slug }));
+  }
+
+  likePost(postBody: BlogPost): void {
+    this.store.dispatch(ClientActions.likePost({ postBody }));
   }
 }

@@ -51,6 +51,10 @@ export class ClientPostViewComponent implements OnInit, OnDestroy {
       });
   }
 
+  likePost() {
+    this.facade.likePost(this.currentPost);
+  }
+
   ngOnDestroy(): void {
     this.facade.clearCurrentPost();
     this.destroy$.next(true);
