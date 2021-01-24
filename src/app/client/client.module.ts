@@ -16,9 +16,7 @@ import { ClientDashboardComponent } from './components/client-dashboard/client-d
 import { ClientPostViewComponent } from './components/client-post-view/client-post-view.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { ClientStateModule } from './+state/client-state.module';
-
 @NgModule({
   declarations: [
     ClientHeaderComponent,
@@ -28,7 +26,6 @@ import { ClientStateModule } from './+state/client-state.module';
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule,
     ClientRoutingModule,
 
     ButtonModule,
@@ -42,6 +39,6 @@ import { ClientStateModule } from './+state/client-state.module';
 
     SharedModule,
     ClientStateModule,
-  ],
+  ]
 })
 export class ClientModule {}

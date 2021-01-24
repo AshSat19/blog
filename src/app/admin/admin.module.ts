@@ -21,7 +21,6 @@ import { AdminService } from './services/admin.service';
 import { PostEditorComponent } from './components/post-editor/post-editor.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminPostViewComponent } from './components/admin-post-view/admin-post-view.component';
 import { DraftPostsComponent } from './components/admin-dashboard/draft-posts/draft-posts.component';
@@ -39,7 +38,6 @@ import { AdminStateModule } from './+state/admin-state.module';
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule,
     AdminRoutingModule,
 
     ButtonModule,
