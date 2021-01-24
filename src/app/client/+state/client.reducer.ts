@@ -1,5 +1,9 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { BlogPost, BlogPostSimple, PostCategories } from 'src/app/shared/models/post';
+import {
+  BlogPost,
+  BlogPostSimple,
+  PostCategories,
+} from 'src/app/shared/models/post';
 
 import * as PostsClientActions from './client.actions';
 import { ClientState } from './client.model';
@@ -23,12 +27,29 @@ export const initialState: ClientState = {
 const postsClientReducer = createReducer(
   initialState,
   // change state when API Fails
-  on(PostsClientActions.apiFailure, (state, { error }) => ({ ...state, error })),
+  on(PostsClientActions.apiFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
 
   // Update state to clear current post
   on(PostsClientActions.clearCurrentPost, (state, action) => ({
     ...state,
-    ...initialState,
+    currentPost: {
+      slug: '',
+      title: '',
+      category: PostCategories.misc,
+      content: '',
+      imageURL: '',
+      createdDate: Date.now(),
+      published: false,
+    },
+  })),
+
+  // Update state to clear posts
+  on(PostsClientActions.clearPosts, (state, action) => ({
+    ...state,
+    allPosts: [],
   })),
 
   // Load All Posts
@@ -39,6 +60,21 @@ const postsClientReducer = createReducer(
   })),
   on(
     PostsClientActions.loadAllPostsSuccess,
+    (state, { allPosts }: { allPosts: BlogPostSimple[] }) => ({
+      ...state,
+      allPosts,
+      loaded: true,
+    })
+  ),
+
+  // Load All Posts
+  on(PostsClientActions.searchPosts, (state) => ({
+    ...state,
+    loaded: false,
+    error: null,
+  })),
+  on(
+    PostsClientActions.searchPostsSuccess,
     (state, { allPosts }: { allPosts: BlogPostSimple[] }) => ({
       ...state,
       allPosts,
@@ -74,7 +110,7 @@ const postsClientReducer = createReducer(
       currentPost,
       loaded: true,
     })
-  ),
+  )
 );
 
 export function reducer(state: ClientState | undefined, action: Action): any {

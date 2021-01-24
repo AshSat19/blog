@@ -54,7 +54,7 @@ export class ClientEffects {
       ) => {
         // Your custom service 'load' logic goes here. For now just return a success action...
         this.service
-          .getPublishedPosts()
+          .getCategoryPosts(action.category)
           .subscribe((allPosts: BlogPostSimple[]) => {
             return this.store.dispatch(
               ClientActions.loadCategoryPostsSuccess({ allPosts })
@@ -64,6 +64,33 @@ export class ClientEffects {
 
       onError: (
         action: ReturnType<typeof ClientActions.loadCategoryPosts>,
+        error
+      ) => {
+        console.error('Error', error);
+        return this.store.dispatch(ClientActions.apiFailure({ error }));
+      },
+    })
+  );
+
+  // API call for uploading featured image
+  searchPosts$ = createEffect(() =>
+    this.dataPersistence.fetch(ClientActions.searchPosts, {
+      run: (
+        action: ReturnType<typeof ClientActions.searchPosts>,
+        state: ClientState
+      ) => {
+        // Your custom service 'load' logic goes here. For now just return a success action...
+        this.service
+          .searchPublishedPosts(action.searchString, action.category)
+          .subscribe((allPosts: BlogPostSimple[]) => {
+            return this.store.dispatch(
+              ClientActions.searchPostsSuccess({ allPosts })
+            );
+          });
+      },
+
+      onError: (
+        action: ReturnType<typeof ClientActions.searchPosts>,
         error
       ) => {
         console.error('Error', error);

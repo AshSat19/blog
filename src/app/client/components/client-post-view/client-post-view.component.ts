@@ -24,7 +24,11 @@ export class ClientPostViewComponent implements OnInit, OnDestroy {
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private facade: ClientFacade, private route: ActivatedRoute, private title: Title) {}
+  constructor(
+    private facade: ClientFacade,
+    private route: ActivatedRoute,
+    private title: Title
+  ) {}
 
   ngOnInit(): void {
     try {
@@ -40,12 +44,15 @@ export class ClientPostViewComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         if (data) {
           this.currentPost = JSON.parse(JSON.stringify(data));
-          this.title.setTitle(`${this.currentPost?.title} | Ashwin Sathian's Blog`)
+          this.title.setTitle(
+            `${this.currentPost?.title} | Ashwin Sathian's Blog`
+          );
         }
       });
   }
 
   ngOnDestroy(): void {
+    this.facade.clearCurrentPost();
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }

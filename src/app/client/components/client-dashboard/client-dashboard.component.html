@@ -1,15 +1,30 @@
 <app-client-header></app-client-header>
 <div class="p-grid">
   <div class="p-grid p-xl-10 p-lg-10 p-md-12 p-sm-12 p-mx-auto p-my-3">
+    <p-menubar [model]="menuItems" class="w-100p">
+      <ng-template pTemplate="end">
+        <input
+          type="text"
+          pInputText
+          placeholder="Search Posts..."
+          [(ngModel)]="searchString"
+          (input)="searchPosts()"
+        />
+      </ng-template>
+    </p-menubar>
     <div class="card">
+      <h2 *ngIf="postCategory" class="heading-text p-text-center">
+        Category: {{ postCategory | titlecase }}
+      </h2>
       <p-dataView
         *ngIf="posts"
         [value]="posts"
         [paginator]="true"
         [showPageLinks]="false"
         [rows]="6"
-        layout="grid"
+        [layout]="postCategory ? 'list' : 'grid'"
         [totalRecords]="posts.length"
+        [style]="{ minWidth: '100%' }"
       >
         <ng-template pTemplate="header">
           <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-center">
@@ -26,7 +41,11 @@
                   {{ post?.createdDate | date }}
                 </div>
                 <div class="post-summary">{{ post?.summary }}</div>
-                <p-tag [value]="post?.category" [rounded]="true"></p-tag>
+                <p-tag
+                  [value]="post?.category"
+                  [rounded]="true"
+                  [routerLink]="'/categories/' + post.category"
+                ></p-tag>
               </div>
               <div class="product-list-action">
                 <button
@@ -51,7 +70,11 @@
                   {{ post?.createdDate | date }}
                 </div>
                 <div class="post-summary">{{ post?.summary }}</div>
-                <p-tag [value]="post?.category" [rounded]="true"></p-tag>
+                <p-tag
+                  [value]="post?.category"
+                  [rounded]="true"
+                  [routerLink]="'/categories/' + post.category"
+                ></p-tag>
                 <button
                   pButton
                   pRipple

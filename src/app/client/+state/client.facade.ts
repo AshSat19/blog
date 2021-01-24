@@ -12,19 +12,30 @@ export class ClientFacade {
   error$ = this.store.pipe(select(ClientSelectors.getClientError));
   currentPost$ = this.store.pipe(select(ClientSelectors.getPost));
   allPosts$ = this.store.pipe(select(ClientSelectors.getAllPosts));
-  
+
   constructor(private store: Store<ClientState>) {}
 
   loadAllPosts(): void {
+    this.clearPosts();
     this.store.dispatch(ClientActions.loadAllPosts());
   }
 
+  searchPosts(searchString: string, category: string = ''): void {
+    this.clearPosts();
+    this.store.dispatch(ClientActions.searchPosts({ searchString, category }));
+  }
+
   loadCategoryPosts(category: string): void {
-    this.store.dispatch(ClientActions.loadCategoryPosts({category}));
+    this.clearPosts();
+    this.store.dispatch(ClientActions.loadCategoryPosts({ category }));
   }
 
   clearCurrentPost(): void {
     this.store.dispatch(ClientActions.clearCurrentPost());
+  }
+
+  clearPosts(): void {
+    this.store.dispatch(ClientActions.clearPosts());
   }
 
   loadPost(slug: string): void {

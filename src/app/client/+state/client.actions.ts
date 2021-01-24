@@ -10,6 +10,9 @@ export const apiFailure = createAction(
 // Clear Current Post
 export const clearCurrentPost = createAction('[Client] Clear Current Post');
 
+// Clear Posts
+export const clearPosts = createAction('[Client] Clear Posts');
+
 // Load All Posts
 export const loadAllPosts = createAction('[Client] Load All Posts');
 export const loadAllPostsSuccess = createAction(
@@ -17,9 +20,20 @@ export const loadAllPostsSuccess = createAction(
   props<{ allPosts: BlogPostSimple[] }>()
 );
 
+// Search Posts
+export const searchPosts = createAction(
+  '[Client] Search Posts',
+  props<{ searchString: string; category?: string }>()
+);
+export const searchPostsSuccess = createAction(
+  '[Client] Search Posts Successful',
+  props<{ allPosts: BlogPostSimple[] }>()
+);
+
 // Load Category Posts
-export const loadCategoryPosts = createAction('[Client] Load Category Posts',
-props<{ category: string }>()
+export const loadCategoryPosts = createAction(
+  '[Client] Load Category Posts',
+  props<{ category: string }>()
 );
 export const loadCategoryPostsSuccess = createAction(
   '[Client] Load Category Posts Successful',
