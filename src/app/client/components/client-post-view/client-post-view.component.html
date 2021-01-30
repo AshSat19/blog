@@ -1,6 +1,11 @@
 <p-scrollTop></p-scrollTop>
 <app-client-header
   [title]="currentPost.title"
+  [subTitle]="
+    (currentPost.createdDate | date) +
+    ' | ' +
+    (currentPost.category | titlecase)
+  "
   [mastHeadCover]="currentPost.imageURL"
 ></app-client-header>
 <div class="p-grid">

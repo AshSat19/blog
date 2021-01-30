@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ClientHeaderComponent implements OnInit {
   @Input() title: string = environment.blogName;
+  @Input() subTitle: string = '';
   @Input() mastHeadCover: string | undefined = environment.mastHeadCoverImage
 
   constructor() {}
