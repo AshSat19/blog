@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -27,7 +27,8 @@ export class ClientPostViewComponent implements OnInit, OnDestroy {
   constructor(
     private facade: ClientFacade,
     private route: ActivatedRoute,
-    private title: Title
+    private title: Title,
+    private meta: Meta
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +41,21 @@ export class ClientPostViewComponent implements OnInit, OnDestroy {
           this.currentPost = JSON.parse(JSON.stringify(data));
           this.title.setTitle(
             `${this.currentPost?.title} | Ashwin Sathian's Blog`
+          );
+          this.meta.addTags(
+            [
+              {
+                name: 'og:title',
+                content: `${this.currentPost?.title} | Ashwin Sathian's Blog`,
+              },
+              {
+                name: 'og:description',
+                content: `${this.currentPost?.summary}`,
+              },
+              { name: 'og:image', content: `${this.currentPost?.imageURL}` },
+              { name: 'og:url', content: location.href },
+            ],
+            true
           );
         }
       });
