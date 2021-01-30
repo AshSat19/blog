@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { Subject } from 'rxjs';
@@ -46,8 +52,7 @@ export class ClientDashboardComponent implements OnInit, OnDestroy {
     this.route?.params?.pipe(takeUntil(this.destroy$)).subscribe((params) => {
       if (params?.category) {
         this.facade.loadCategoryPosts(
-          this.route.snapshot.params.category.toUpperCase()
-        );
+          this.route.snapshot.params.category.toUpperCase());
         this.postCategory = params.category;
       } else {
         (this.postCategory = ''), this.facade.loadAllPosts();
@@ -63,6 +68,10 @@ export class ClientDashboardComponent implements OnInit, OnDestroy {
 
   searchPosts() {
     this.facade.searchPosts(this.searchString, this.postCategory);
+  }
+
+  pageEventHandler(scrollTarget: any, event: any) {
+    scrollTarget.scrollIntoView({ behavior: 'smooth' });
   }
 
   ngOnDestroy(): void {

@@ -31,12 +31,6 @@ export class ClientPostViewComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    try {
-      window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
-    } catch (e) {
-      window.scrollTo(0, 0);
-    }
-
     this.facade.loadPost(this.route.snapshot.params.slug);
 
     this.facade.currentPost$
