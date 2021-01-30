@@ -86,7 +86,7 @@ export class AdminEffects {
             .getTime()
             .toString()}-${newPost.title?.toLowerCase().split(' ').join('-')}`;
           newPost.summary =
-            newPost.summary || newPost.content.substring(0, 150);
+            newPost.summary || newPost.content.substring(0, 200);
 
           this.service.savePost(newPost).subscribe(() => {
             return this.router.navigate(['/admin']);

@@ -26,7 +26,7 @@
 
 <div class="p-grid p-p-2">
   <div class="p-col-4">
-    <p-card header="Post Summary">
+    <p-card header="Post Date">
       <p-calendar
         styleClass="w-100p"
         [(ngModel)]="postCreatedDate"
@@ -52,7 +52,7 @@
         [style]="{ width: '100%' }"
         [(ngModel)]="currentPost.summary"
         placeholder="Enter Post Summary"
-        maxlength="100"
+        maxlength="200"
       ></textarea>
     </p-card>
 
@@ -69,7 +69,7 @@
       <img
         *ngIf="currentPost?.imageURL"
         [src]="currentPost.imageURL"
-        class="p-mx-1 full-width"
+        class="p-mx-1 w-100p"
       />
       <button
         pButton
