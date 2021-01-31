@@ -19,6 +19,7 @@ export class PostEditorComponent implements OnInit, OnDestroy {
     { label: 'Review', value: PostCategories.review },
     { label: 'Tech', value: PostCategories.tech },
     { label: 'Trivia', value: PostCategories.trivia },
+    { label: 'Cricket', value: PostCategories.cricket },
   ];
 
   destroy$: Subject<boolean> = new Subject<boolean>();

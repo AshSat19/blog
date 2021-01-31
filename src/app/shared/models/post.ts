@@ -25,4 +25,5 @@ export enum PostCategories {
   trivia = 'TRIVIA',
   review = 'REVIEW',
   tech = 'TECH',
+  cricket = 'CRICKET',
 }

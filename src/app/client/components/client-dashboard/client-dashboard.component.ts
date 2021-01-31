@@ -39,6 +39,10 @@ export class ClientDashboardComponent implements OnInit, OnDestroy {
       label: PostCategories.trivia,
       routerLink: `/categories/${PostCategories.trivia.toLowerCase()}`,
     },
+    {
+      label: PostCategories.cricket,
+      routerLink: `/categories/${PostCategories.cricket.toLowerCase()}`,
+    },
   ];
   posts: BlogPostSimple[] = [];
   postCategory: string = '';
